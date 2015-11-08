@@ -1,0 +1,35 @@
+    <!-- tvshow tile -->
+    <div class="video-tile tvshow-tile">
+        <img class="video-poster" src="{poster_image_url}">
+        <div class="video-info" href="#" data-toggle="tooltip" 
+                data-placement="top" 
+                title="({tvshow_genre}) {tvshow_storyline}">
+            {tvshow_title}
+            <br>
+            <span class="label label-default">{tvshow_seasons} seasons</span>
+            <span class="label label-info">{tvshow_duration}</span>
+            <span class="label label-primary">
+                <span class="glyphicon glyphicon-star" 
+                        aria-hidden="true" style="color: #D8D805;">
+                </span>
+                {tvshow_rating}
+            </span>
+            <span class="label label-success"></span>
+        </div>
+        <div class="video-play-button tvshow trailer"
+                data-trailer-youtube-id="{trailer_youtube_id}" 
+                data-toggle="modal" data-target="#trailer">
+            <span class="glyphicon glyphicon-play-circle" 
+                aria-hidden="true">
+            </span>
+            <div class="play-text">trailer</div>
+        </div>
+        <div class="video-play-button tvshow opening"
+                data-trailer-youtube-id="{opening_youtube_id}" 
+                data-toggle="modal" data-target="#trailer">
+            <span class="glyphicon glyphicon-play-circle" 
+                aria-hidden="true">
+            </span>
+            <div class="play-text">opening</div>
+        </div>
+    </div>

@@ -1,0 +1,54 @@
+     <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal"
+                aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <!-- Fixed navbar -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="navbar-brand">
+              Favourites...
+            </div>
+            <ul class="nav navbar-nav">
+              <li>
+                <a class="jumper" href="#movies">
+                  <img src="icons/movies.ico" width="25" height="25">
+                  Movies
+                </a>
+              </li>
+              <li>
+                <a class="jumper" href="#tvshows">
+                  <img src="icons/tvshows.ico" width="25" height="25">
+                  Tv Shows
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- page content -->
+    <div class="container main-content">
+      <h1 class="text-left" id="movies">Favourite movies</h1>
+      {movie_tiles}
+      <h1 class="text-left" id="tvshows">Favourite TV shows</h1>
+      {tvshow_tiles}
+    </div>
+    <!-- footer -->
+    <footer class="footer footer-inverse">
+      <div class="container">
+        {footer}
+      </div>
+    </footer>

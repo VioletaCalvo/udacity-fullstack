@@ -1,0 +1,134 @@
+body {
+        padding-top: 80px;
+}
+#trailer .modal-dialog {
+    margin-top: 200px;
+    width: 640px;
+    height: 480px;
+}
+.hanging-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    z-index: 9001;
+}
+#trailer-video {
+    width: 100%;
+    height: 100%;
+}
+
+.scale-media {
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.scale-media iframe {
+    border: none;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+}
+
+.video-tile {
+    width: 220px;
+    height: 342px;
+    max-height: 342px;
+    display: inline-block;
+    position: relative;
+}
+
+.video-poster {
+    width: 100%;
+    height: 100%;
+}
+
+.video-tooltip {
+    width: 10px;
+}
+
+.video-info {
+    position: relative;
+    bottom: 50px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    width: 220px;
+    height: 50px;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.video-info:hover {
+    cursor: pointer;
+}
+
+.video-play-button {
+    z-index: 3;
+    display: inline-block;
+    position: absolute;
+    bottom: calc(50% - 42px);
+    opacity: 0.5;
+    filter: alpha(opacity=40);
+}
+
+.video-play-button:hover {
+    opacity: 0.9;
+    filter: alpha(opacity=0.9);
+    cursor: pointer;
+}
+
+.video-play-button.movie {
+    font-size: 70px;
+    color: white;
+    left: calc(50% - 32px);
+}
+
+.video-play-button.tvshow {
+    font-size: 55px;
+    color: white;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.video-play-button.tvshow.trailer {
+    left: 20px;
+}
+
+.video-play-button.tvshow.opening {
+    right: 20px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    text-align:center;
+    width: 100%;
+    height: 60px;
+    background-color: #D9EDF7;
+    font-size: 12px;
+    padding-top: 15px;
+    z-index: 10;
+    overflow-x: hidden;
+}
+
+.icon-credits {
+    font-size: 9px;
+}
+
+.main-content {
+    /*padding for footer*/
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.play-text {
+    background: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 9px;
+    font-weight: bold;
+    color: black;
+    text-overflow: ellipsis;
+}
