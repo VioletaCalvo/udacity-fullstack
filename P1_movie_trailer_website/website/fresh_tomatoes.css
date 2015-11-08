@@ -113,8 +113,8 @@ body {
     overflow-x: hidden;
 }
 
-.icon-credits {
-    font-size: 9px;
+.credits {
+    overflow-x: hidden;
 }
 
 .main-content {
