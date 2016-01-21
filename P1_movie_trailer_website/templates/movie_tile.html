@@ -1,26 +1,31 @@
     <!-- movie tile -->
     <div class="video-tile movie-tile">
-        <img class="video-poster" src="{poster_image_url}">
-        <div class="video-info" href="#" data-toggle="tooltip" 
-                data-placement="top" 
+        <img class="video-poster" src=""
+             style="
+                 background-image: url('{poster_image_url}');
+                 background-size: contain;
+                 background-repeat: round;
+                 "
+          />
+        <div class="video-info" href="#" data-toggle="tooltip"
+                data-placement="top"
                 title="({movie_genre}) {movie_storyline}">
             {movie_title}
             <br>
             <span class="label label-default">{movie_year}</span>
             <span class="label label-info">{movie_duration}</span>
             <span class="label label-primary">
-                <span class="glyphicon glyphicon-star" 
+                <span class="glyphicon glyphicon-star"
                         aria-hidden="true" style="color: #D8D805;">
                 </span>
                 {movie_rating}
             </span>
         </div>
-        <div class="video-play-button movie" 
-                data-trailer-youtube-id="{trailer_youtube_id}" 
+        <div class="video-play-button movie"
+                data-trailer-youtube-id="{trailer_youtube_id}"
                 data-toggle="modal" data-target="#trailer">
-            <span class="glyphicon glyphicon-play-circle" 
+            <span class="glyphicon glyphicon-play-circle"
                 aria-hidden="true">
             </span>
         </div>
     </div>
-    
