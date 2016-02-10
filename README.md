@@ -6,7 +6,7 @@ This repository contains the projects of the of Udacity's [Full Stack Web Develo
 
 ## Project list
 
-1. **P1** [Movie Trailer Website](http://violetacalvo.github.io/udacity-fullstack/P1_movie_trailer_website/website/fresh_tomatoes.html) - *November 2015*
+1. **P1** [Movie Trailer Website](http://com.movietrailerwebsite.s3-website.eu-central-1.amazonaws.com/) - *November 2015*
 2. **P2** Tournament Results - *started*
 3. **P3** Item Catalog - *pending*
 4. **P4** Conference Organization App - *pending*
