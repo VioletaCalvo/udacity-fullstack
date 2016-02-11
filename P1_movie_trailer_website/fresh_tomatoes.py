@@ -56,7 +56,7 @@ def create_video_tiles_content(videos, type):
                 movie_storyline=video.omdb_info['Plot'],
                 movie_rating=video.omdb_info['imdbRating'],
                 movie_genre=video.omdb_info['Genre'],
-                poster_image_url=video.omdb_info['Poster'],
+                poster_image_url=video.tmdb_poster,
                 trailer_youtube_id=extract_youtube_id(video.trailer)
             )
         elif type is 'tvshows':
@@ -68,7 +68,7 @@ def create_video_tiles_content(videos, type):
                 tvshow_rating=video.omdb_info['imdbRating'],
                 tvshow_seasons=video.season_count,
                 tvshow_genre=video.omdb_info['Genre'],
-                poster_image_url=video.omdb_info['Poster'],
+                poster_image_url=video.tmdb_poster,
                 trailer_youtube_id=extract_youtube_id(video.trailer),
                 opening_youtube_id=extract_youtube_id(video.opening)
             )
