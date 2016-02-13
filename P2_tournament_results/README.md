@@ -21,6 +21,7 @@ This project has a Vagrant virtual machine you can use with all required softwar
 1. Clone this repository and log in the virtual machine with this commands:
 
   ```sh
+  cd vagrant      # go to the vagrant folder
   vagrant up      # powers on the virtual machine
   vagrant ssh     # logs into the virtual machine
   ```
