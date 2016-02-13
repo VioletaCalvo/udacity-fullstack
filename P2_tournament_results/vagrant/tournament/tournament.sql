@@ -22,9 +22,10 @@ CREATE TABLE players (id SERIAL PRIMARY KEY,
                       );
 
 -- Matches table
-CREATE TABLE matches (id SERIAL PRIMARY KEY,
-                      FOREIGN KEY winner INTEGER REFERENCES players (id),
-                      FOREIGN KEY loser INTEGER REFERENCES players (id),
+CREATE TABLE matches (id SERIAL PRIMARY KEY, 
+                      winner INTEGER REFERENCES players (id), 
+                      loser INTEGER REFERENCES players (id) 
+                        CHECK (winner != loser)
                       );
 
 -- VIEWS
