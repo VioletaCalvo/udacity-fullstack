@@ -8,6 +8,8 @@ This project has a Python module that uses the PostgreSQL database to keep track
 
 The game tournament use the Swiss system for pairing up players in each round: players are not eliminated, and each player should be paired with another player with the same number of wins, or as close as possible.
 
+`tournament` forlder contains basic implementation of project especifications
+`tournament-plus` folder contains an extra, it supports draw (tied games)
 
 ## How to run
 
