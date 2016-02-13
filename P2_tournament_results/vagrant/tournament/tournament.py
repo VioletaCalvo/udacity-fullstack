@@ -45,20 +45,29 @@ def executeQuery(query, data=None, get_result=False):
 
 def deleteMatches():
     """Remove all the match records from the database."""
+    # set query
     query = 'DELETE FROM matches;'
+    # execute query
     executeQuery(query)
 
 
 def deletePlayers():
     """Remove all the player records from the database."""
+    # set query
     query = 'DELETE FROM players;'
+    # execute query
     executeQuery(query)
+
 
 def countPlayers():
     """Returns the number of players currently registered."""
+    # set query
     query = 'SELECT count(*) FROM players;'
+    # execute query
     result = executeQuery(query, get_result=True)
     # result has only a row with a single column
+    for player in result:
+        print player
     return result[0][0]
 
 
@@ -71,8 +80,10 @@ def registerPlayer(name):
     Args:
       name: the player's full name (need not be unique).
     """
+    # set query
     query = 'INSERT INTO players (name) VALUES (%s);'
     data = (name,)
+    # execute query
     executeQuery(query, data)
 
 
@@ -89,7 +100,9 @@ def playerStandings():
         wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
+    # set query
     query = 'SELECT * FROM standings;'
+    # execute query and return result
     return executeQuery(query, get_result=True)
 
 
@@ -100,10 +113,13 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
+    # set query
     query = 'INSERT INTO matches (winner, loser) VALUES (%s, %s);'
     data = (winner, loser,)
+    # execute query and return result
     return executeQuery(query, data)
  
+
 def swissPairings():
     """Returns a list of pairs of players for the next round of a match.
   
@@ -119,14 +135,19 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
+    # get palyer standings
     standings = playerStandings()
+    # caltulate total pairs number
     total_pairs = len(standings) / 2
+    # initialize pairs array
     pairs = []
+    # generate pairs
     for pair in range(0, total_pairs):
         player1 = standings[2 * pair]
         player2 = standings[2 * pair + 1]
         pair = (player1[0], player1[1], player2[0], player2[1])
         pairs.append(pair)
+    # return pairs array
     return pairs
 
 

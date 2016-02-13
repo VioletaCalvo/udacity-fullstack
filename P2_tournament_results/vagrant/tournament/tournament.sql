@@ -3,24 +3,32 @@
 -- REMAINDER:
 -- $ psql
 -- $ psql => \i tournament.sql
+-- $ psql => \q  # exit psql
 
+-- CREATE AND CONNECT DATABASE
+-- Delete old torunament database
 DROP DATABASE IF EXISTS tournament;
-
+-- Create the torunament database
 CREATE DATABASE tournament;
-
+-- Connect to the database
 \c tournament;
 
+
+-- TABLES
+-- Payers table
 CREATE TABLE players (id SERIAL PRIMARY KEY,
                       name VARCHAR(50) NOT NULL,
                       createdAt TIMESTAMP DEFAULT current_timestamp
                       );
 
+-- Matches table
 CREATE TABLE matches (id SERIAL PRIMARY KEY,
                       FOREIGN KEY winner INTEGER REFERENCES players (id),
                       FOREIGN KEY loser INTEGER REFERENCES players (id),
                       );
 
--- -Create standings wiew with each player wins and matches
+-- VIEWS
+-- Create standings wiew with each player wins and matches
 CREATE VIEW standings AS 
   SELECT 
     players.id as id, 
