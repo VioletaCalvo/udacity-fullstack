@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = 'flash'>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+</div>
+
+<!-- page title -->
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">Edit item</h1>
+  </div>
+</div>
+
+<!-- category list -->
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <!-- NEW ITEM FORM-->
+      <form class="s12" action="" method="post">
+        <!-- name input -->
+        <div class="input-field col s12 m6 input-blue">
+          <input id="item_name" type="text" name="name" value="{{item.name}}">
+          <label for="item_name">Name</label>
+        </div>
+        <!-- category input -->
+        <div class="input-field col s12 m6 input-blue">
+          <select name="category_id">
+            {% for category in categories %}
+              {% if category.name == item.category.name %}
+                <option placeholder="Choose a category" value="{{category.category_id}}" selected class="orange-text">{{category.name}}</option>
+              {% else %}
+                <option placeholder="Choose a category" value="{{category.id}}">{{category.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <label>Category</label>
+        </div>
+        <!-- description input -->
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="description" class="materialize-textarea" name="description">{{item.description}}</textarea>
+            <label for="desctiption orange">Description</label>
+          </div>
+        </div>
+        <!-- submit button -->
+        <div class="row center">
+          <button type="submit" class="waves-effect waves-light btn orange" id="submit" type="submit">
+            <i class="material-icons right">save</i>
+            save changes
+          </button>
+        </div>
+      </form>
+    </div>
+    <br><br>
+    <div class="section">
+    </div>
+</div>
+
+{% endblock %}

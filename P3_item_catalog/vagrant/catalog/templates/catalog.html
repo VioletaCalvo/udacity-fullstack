@@ -1,0 +1,71 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = 'flash'>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+</div>
+
+<!-- page title -->
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">Catalog</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">A list of categories and lastest items</h5>
+    </div>
+  </div>
+</div>
+
+<!-- category list -->
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+    <div class="row">
+      <!-- CATEGORIES -->
+      <div class="col s12 m6">
+        <div class="icon-block">
+          <h4 class="center">Categories</h4>
+          <div class="collection">
+            {% for category in categories %}
+            <a href="{{url_for('showItems', category_name=category.name)}}" class="collection-item">
+              {{category.name}}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- LASTEST ITEMS -->
+      <div class="col s12 m6">
+        <div class="icon-block">
+          <h4 class="center">Items
+            {%if 'username' in session %}
+              <a class="btn-floating waves-effect waves-light blue" href="{{url_for('newItem')}}"><i class="material-icons">add</i></a>
+            {% endif %}
+          </h4>
+          <div class="collection">
+            {% for item in items %}
+              <a href="{{url_for('showItem', item_name=item.name, category_name=catDict[item.category_id])}}" class="collection-item">
+                <span class="title">
+                  {{item.name}}
+                  <em class="blue-grey-text">({{catDict[item.category_id]}})</em>
+                </span>
+              </a>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="section">
+    </div>
+</div>
+
+{% endblock %}

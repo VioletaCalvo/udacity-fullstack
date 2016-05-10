@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = 'flash'>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+</div>
+
+<!-- page title -->
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">Catalog - Items</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">All items for {{category.name}}</h5>
+    </div>
+  </div>
+</div>
+
+<!-- category list -->
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+    <div class="row">
+      <!-- CATEGORIES -->
+      <div class="col s12 m6">
+        <div class="icon-block">
+          <h4 class="center">Categories</h4>
+          <div class="collection">
+            {% for cat in categories %}
+            <a href="{{url_for('showItems', category_name=cat.name)}}" class="collection-item">
+              {{cat.name}}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- LASTEST ITEMS -->
+      <div class="col s12 m6">
+        <div class="icon-block">
+          <h4 class="center">
+            {{category.name}} 
+            <small class="orange-text">{{itemCount}}</small>
+          </h4>
+          <div class="collection">
+            {% for item in items %}
+              <a href="{{url_for('showItem', item_name=item.name, category_name=category.name)}}" class="collection-item">
+                <span class="title">{{item.name}}</span>
+                <p class="grey-text">{{item.description}}</p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="section">
+    </div>
+</div>
+
+{% endblock %}

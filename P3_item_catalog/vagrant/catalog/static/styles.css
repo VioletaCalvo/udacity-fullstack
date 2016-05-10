@@ -1,0 +1,19 @@
+  
+/* label focus color */
+input[type=text]:focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+ color: #29b6f6;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus,
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #29b6f6;
+  box-shadow: 0 1px 0 0 #29b6f6;
+}
+
+
+/* SELECT OPTIONS */
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #29b6f6;
+}

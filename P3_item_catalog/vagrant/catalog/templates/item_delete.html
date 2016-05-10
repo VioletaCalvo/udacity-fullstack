@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<!-- page title -->
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">Catalog - item</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">Item details</h5>
+    </div>
+  </div>
+</div>
+
+<!-- category list -->
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card orange lighten-5">
+          <div class="card-content">
+            <span class="card-title"> {{item.name}} </span>
+            <p class="grey-text">
+              <em> Category: {{category_name}} </em>
+            </p>
+            <p class="blue-grey-text">
+              {{item.description}}
+            </p>
+            <br><br>
+            <b>
+              Please confirm you want to delete this item
+            </b>
+          </div>
+         {%if 'username' in session %}
+            <div class="card-action orange lighten-4">
+              <form action="{{url_for('deleteItem', item_name=item.name, category_name=category_name)}}" method = 'post'>
+                <a href="{{url_for('showItem', item_name=item.name, category_name=category_name)}}" class="bluye-grey-text">Cancel</a>
+                <button class="btn black-text orange lighten-4 waves-effect waves-teal btn-flat" type="submit" id="submit">Delete
+                  <i class="material-icons right">delete</i>
+                </button>
+              </form>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

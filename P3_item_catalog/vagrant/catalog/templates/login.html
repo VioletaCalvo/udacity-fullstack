@@ -1,0 +1,132 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<!-- GOOGLE PLUS SIGN IN SCRIPT -->       
+<script>
+function signInCallback(authResult) {
+  if (authResult['code']) {
+    // Hide the sign-in button now that the user is authorized
+    $('#signInButton').attr('style', 'display: none');
+    // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main page
+    $('#result').html('<h5 class="green-text header col s12 light">Welcome!<br>Fetching your information, please wait... <br> <div class="preloader-wrapper small active"> <div class="spinner-layer spinner-green-only"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div> </h5>')
+    $.ajax({
+      type: 'POST',
+      url: '/gconnect?state={{STATE}}',
+      processData: false,
+      data: authResult['code'],
+      contentType: 'application/octet-stream; charset=utf-8',
+      success: function(result) {
+        // Handle or verify the server response if necessary.
+        if (result) {
+          $('#result').html(result + '<div class="green-text">Login Successful!</br>Redirecting...</div>')
+         setTimeout(function() {
+          window.location.href = "/";
+         }, 3000);
+          
+      } else if (authResult['error']) {
+    console.log('There was an error: ' + authResult['error']);
+  } else {
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+         }
+      }
+      
+  }); } }
+</script>
+<!--END GOOGLE PLUS SIGN IN SCRIPT-->
+      
+
+<!--FACEBOOK SIGN IN SCRIPT-->
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '{{FACEBOOK_APP_ID}}',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+  };
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function sendTokenToServer() {
+    var access_token = FB.getAuthResponse()['accessToken'];
+    console.log(access_token)
+    console.log('Welcome!  Fetching your information.... ');
+    $('#result').html('<h5 class="green-text header col s12 light">Welcome!<br>Fetching your information, please wait... <br> <div class="preloader-wrapper small active"> <div class="spinner-layer spinner-green-only"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div> </h5>')
+    FB.api('/me', function(response) {
+      // Hide sign in buttons
+      $('#signInButton').attr('style', 'display: none');
+      console.log('Successful login for: ' + response.name);
+     $.ajax({
+      type: 'POST',
+      url: '/fbconnect?state={{STATE}}',
+      processData: false,
+      data: access_token,
+      contentType: 'application/octet-stream; charset=utf-8',
+      success: function(result) {
+        // Handle or verify the server response if necessary.
+        if (result) {
+          $('#result').html(result + '<div class="green-text">Login Successful!</br>Redirecting...</div>')
+         setTimeout(function() {
+          window.location.href = "/";
+         }, 3000);
+          
+      } else {
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+         }
+      }
+      
+  });
+    });
+  }
+</script>
+<!--END FACEBOOK SIGN IN SCRIPT -->
+
+<!-- center content -->
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <div class="row center">
+      <!-- Sing in buttons ID to hide when necessary -->
+      <div id="signInButton">
+        <h5 class="header col s12 light">Login with your favourite service</h5>
+        <!-- GOOGLE SIGN IN BUTTON -->
+        <span class="g-signin"
+          data-scope="openid email"
+          data-clientid="823533014800-0bio9pb6rl9lniqdd8fje4heqn2iraba.apps.googleusercontent.com"
+          data-redirecturi="postmessage"
+          data-accesstype="offline"
+          data-cookiepolicy="single_host_origin"
+          data-callback="signInCallback"
+          data-approvalprompt="force">
+        </span>
+        <!-- END GOOGLE SIGN IN BUTTON -->
+        <br>
+        <!-- FACEBOOK SIGN IN BUTTON -->
+        <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
+          <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
+        </fb:login-button>
+        <!-- END FACEBOOK SIGN IN BUTTON -->
+      </div>
+      <!-- Show wellcome message and public profile for a moment-->
+      <br><br>
+      <div id="result"></div>
+
+  
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
