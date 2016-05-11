@@ -385,10 +385,10 @@ def deleteItem(item_name, category_name):
         return render_template('item_delete.html', item=itemToDelete, category_name=category_name)
 
 
-# if __name__ == '__main__':
-#     app.secret_key = 'super_secret_key'
-#     app.debug = True
-#     app.run(host='0.0.0.0', port=8000)
+if __name__ == '__main__':
+    app.secret_key = 'super_secret_key'
+    app.debug = True
+    app.run(host='0.0.0.0', port=8000)
     
-app.secret_key = 'super_secret_key'
-app.debug = True
+# app.secret_key = 'super_secret_key'
+# app.debug = True

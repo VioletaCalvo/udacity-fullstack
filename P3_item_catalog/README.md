@@ -47,6 +47,7 @@ This project users Google and Facebook services for authentication & authorizati
 
   ```sh
   python database_setup.py
+  python insertitems.py
   ```
 
 4. Replace your client secrets for Facebook and Google sing in:
