@@ -10,7 +10,7 @@ class User(Base):
     __tablename__ = 'user'
    
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), primary_key=True)
+    name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
 
@@ -19,7 +19,7 @@ class Category(Base):
     __tablename__ = 'category'
    
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), primary_key=True)
+    name = Column(String(250), nullable=False)
 
     @property
     def serialize(self):
@@ -49,7 +49,8 @@ class Item(Base):
            'id': self.id,
            'name': self.name,
            'description': self.description,
-           'category': self.category_id
+           'category': self.category_id,
+           'owner': self.user_id
        }
 
 

@@ -2,6 +2,8 @@
 
 An app created for the 3th Project of Udacity's [Full Stack Web Developper Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004).
 
+Demo version [here](https://udacity-catalog.herokuapp.com)
+
 ## Features
 
 #### API Endpoints
