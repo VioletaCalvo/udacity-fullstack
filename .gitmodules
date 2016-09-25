@@ -1,3 +1,6 @@
 [submodule "P4_Design_a_Game"]
 	path = P4_Design_a_Game
 	url = https://github.com/VioletaCalvo/udacity-fsnd-p4.git
+[submodule "P5_server_configuration"]
+	path = P5_server_configuration
+	url = https://github.com/VioletaCalvo/udacity-fsnd-p5.git
